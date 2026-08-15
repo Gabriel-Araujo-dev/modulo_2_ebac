@@ -1,0 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+requests.packages.urllib3.disable_warnings()
+
+# Define a URL do site que será utilizado para a coleta dos dados
+url = 'https://books.toscrape.com/'
+
+# Realiza uma requisição para obter o conteúdo da página
+requisicao = requests.get(url)
+
+# Converte o conteúdo HTML para uma estrutura que pode ser analisada pelo BeautifulSoup
+extracao = BeautifulSoup(requisicao.text, 'html.parser')
+
+# Exibe os primeiros 2000 caracteres do HTML formatado
+print(extracao.prettify()[:2000])
